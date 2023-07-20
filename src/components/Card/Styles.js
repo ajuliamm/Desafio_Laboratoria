@@ -7,8 +7,12 @@ export const ContainerCard = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    box-shadow: 0 0px 10px 0 grey;
     @media (min-width: 640px){
         width: ${props => props.cardView === "horizontal" ? "290px": "90vw"};
+    }
+    &:hover{
+        box-shadow: 0 0px 10px 0 #FDE535;
     }
 
 `;
@@ -118,8 +122,13 @@ export const DivInfo = styled.div`
     align-items: center;
     justify-content: center;
     padding: 0 1px;
-    @media (min-width: 640px){
+    @media (min-width: 400px){
         min-width:100px;
+        
+    }
+    @media (min-width: 500px){
+        min-width:100px;
+        padding: 0 5px;
     }
     
 `;

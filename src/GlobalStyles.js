@@ -34,7 +34,7 @@ export default createGlobalStyle`
         background-color: ${({theme}) => theme.bgFnc};
         color:${({theme}) => theme.btnFnc};
     }
-    &.cardView{
+    &.cardView, &.pages{
         
         color:${({theme}) => theme.text};
     }

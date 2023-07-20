@@ -12,11 +12,24 @@ import Select from './components/Select/Select';
 
 function App() {
 
+  const qtdItensPage = useRef()
+
+  const [theme, setTheme] = useState('light');
+  const [cardView, setCardView] = useState("horizontal");
+  const [qtdCards, setQtdCards] = useState("");
+  const [cars, setCars] = useState([]);
+  const [totalOfPage, setTotalOfPage] = useState(10);
+  const [pageActual, setPageActual] = useState(1)
+
   const listCars = (cars, actualPage, limiteItens) => {
+    
+    console.log(cars, actualPage, limiteItens)
     let page = [];
     let totalPage = Math.ceil(cars.length / limiteItens);
     let count = (actualPage * limiteItens) - limiteItens;
     let delimiter = count + limiteItens;
+    setTotalOfPage(totalPage);
+   
 
     if (actualPage <= totalPage) {
       for (let i = count; i < delimiter; i++) {
@@ -24,26 +37,25 @@ function App() {
         count++;
       }
     }
+    console.log(page)
     return page;
   }
 
-  const qtdItensPage = useRef()
-
-  const [theme, setTheme] = useState('light');
-  const [cardView, setCardView] = useState("horizontal");
-  const [qtdCards, setQtdCards] = useState("");
-  const [cars, setCars] = useState([]);
+  console.log(totalOfPage)
 
   useEffect(() => {
     if (qtdItensPage.current && qtdItensPage.current.value) {
       setQtdCards(qtdItensPage.current.value);
     }
+  }, [qtdItensPage]);
 
-    const cardsFilter = listCars(data, 1, qtdCards)
-    if (Array.isArray(cardsFilter)) {
-      setCars(cardsFilter)
+  useEffect(()=> {
+    const NumberQtdCards = Number(qtdCards)
+    const cardsFilter = listCars(data, pageActual, NumberQtdCards);
+    if (Array.isArray(cardsFilter) && cardsFilter) {
+       setCars(cardsFilter)
     }
-  }, [qtdCards]);
+  }, [qtdCards, pageActual]);
 
 
   useEffect(() => {
@@ -55,6 +67,16 @@ function App() {
   const changeCardView = (viewCard) => {
     viewCard === "horizontal" ? setCardView("vertical") : setCardView("horizontal")
     // console.log(cardView)
+  }
+  const changePage = (action) => {
+    let calcChangePage = pageActual ;
+    if (action === "increase" && pageActual < totalOfPage) {
+      calcChangePage++;
+    } else if (action === "decrease" && pageActual > 1) {
+      calcChangePage--;
+    }
+    console.log(calcChangePage)
+    setPageActual(calcChangePage);
   }
 
   return (
@@ -73,9 +95,16 @@ function App() {
               <Select ref={qtdItensPage} onChange={() => setQtdCards(qtdItensPage.current.value)} />
             </div>
             <div className='cards'>
-              {cars.map(car => (
-                <Card car={car} key={car.veiculo_id} cardView={cardView} />
-              ))}
+              {cars.length > 0 ? (
+                cars.map(car => (
+                <Card car={car} key={car.veiculo_id} cardView={cardView}/>
+              )))
+              : (<p>Nenhum carro foi encontrado</p>)
+            }              
+            </div>
+            <div className='DivButtons'>
+              <Button typeBtn="pages" content="Anterior" onClick={()=>changePage("decrease")}/>
+              <Button typeBtn="pages" content="Próximo" onClick={()=>changePage("increase")}/>
             </div>
 
           </SectionCards>

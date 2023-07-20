@@ -23,6 +23,16 @@ export const StyledButton = styled.button`
         
     
     }
+    &.pages{
+        margin: 10px;
+        width: 100px;
+        height: 20px;
+        background-color: rgb(29,30,18,30%);
+        border-radius: 3px;
+        outline: none;
+        border: 1px solid grey;
+
+    }
     &.finan, &.contact{
     width: 100%;
     height: 25px;

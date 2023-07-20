@@ -18,6 +18,16 @@ export const SectionCards = styled.div`
     justify-content: center;
     align-items: center;
     gap: 25px;
+  
+
+    &.DivButtons{
+      
+      width: 100vw;
+      display: flex;
+      gap: 50px;
+      justify-content: space-around;
+      
+    }
     }
     &.filter{
       width: 100%;
