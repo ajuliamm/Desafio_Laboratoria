@@ -15,11 +15,12 @@ const Header = ({theme,setTheme}) => {
     }
     return(
         <Container>
-            <Logo src="https://github.com/ajuliamm/ajuliamm/assets/93016620/949384eb-8076-4544-9420-5ad611795778"/>
+            <Logo src="https://github.com/ajuliamm/ajuliamm/assets/93016620/949384eb-8076-4544-9420-5ad611795778" alt="Logo SóCarrão"/>
             <Button 
             typeBtn="theme" 
             onClick={()=>changeTheme(theme)}
-            content={theme==="dark"? <i className="bi bi-brightness-high-fill"></i>:<i className="bi bi-moon-fill"></i>}/>
+            content={theme==="dark"? <i className="bi bi-brightness-high-fill"></i>:<i className="bi bi-moon-fill"></i>}
+            arial-label="Botão para mudar o tema do site"/>
         </Container>
     )
 }

@@ -12,6 +12,7 @@ export const StyledButton = styled.button`
         opacity: .8;
         color: #fff;
         font-size: 1.8rem;
+        
     }
     &.cardView{
         width: 40px;
@@ -20,8 +21,41 @@ export const StyledButton = styled.button`
         background-color: transparent;
         font-size: 2rem;
         margin-left: 7px;
+
+        
         
     
+    }
+    &.more{
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: rgb(165, 163, 163, 59%);
+        border-radius: 50%;
+        font-size: 2rem;
+        margin-left: 7px;
+        position:absolute;
+        right: 3px;
+        top: 5px;
+        z-index: 1;
+        opacity: .5;      
+        box-shadow:0 2px 5px 0 ;
+        @media (min-width:1180px) {
+            display:  ${props => props.cardView === "horizontal" ? "block" : "none"};
+            
+
+
+
+        }
+    
+    }
+
+    &.more.picture{
+        left: -5px;
+        opacity: 1;
+        background-color: rgb(165, 163, 163, 99%);
+        display: block;
+        z-index: 2;
     }
     &.pages{
         margin: 10px;
@@ -34,26 +68,25 @@ export const StyledButton = styled.button`
 
     }
     &.finan, &.contact{
-    width: 100%;
-    height: 25px;
-    border-radius: 5px;
-    outline: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    @media (min-width: 440px){
-            font-size: 1.4rem;
-            height: 35px;
-            border-radius: 10px;
+        width: 100%;
+        height: 25px;
+        border-radius: 5px;
+        outline: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        @media (min-width: 440px){
+                font-size: 1.4rem;
+                height: 35px;
+                border-radius: 10px;
+                margin-top: 2px ;
         }
-    &:hover{
-            background-color: #FDE535;
-            border-color: #FDE535;
-            color: #000;
-           
-    }
-    &:active{
-        opacity: .8;
-    }
+        &:hover{
+            opacity: .5;
+            
+        }
+        &:active{
+            opacity: .8;
+        }
     }
 
 

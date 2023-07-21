@@ -8,6 +8,12 @@ import Button from './components/Button/Button';
 import data from "./data.json";
 import Header from './components/Header/Header';
 import Select from './components/Select/Select';
+import { register } from 'swiper/element/bundle';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+register();
 
 
 function App() {
@@ -23,7 +29,6 @@ function App() {
 
   const listCars = (cars, actualPage, limiteItens) => {
     
-    console.log(cars, actualPage, limiteItens)
     let page = [];
     let totalPage = Math.ceil(cars.length / limiteItens);
     let count = (actualPage * limiteItens) - limiteItens;
@@ -37,11 +42,8 @@ function App() {
         count++;
       }
     }
-    console.log(page)
     return page;
   }
-
-  console.log(totalOfPage)
 
   useEffect(() => {
     if (qtdItensPage.current && qtdItensPage.current.value) {
@@ -66,7 +68,6 @@ function App() {
 
   const changeCardView = (viewCard) => {
     viewCard === "horizontal" ? setCardView("vertical") : setCardView("horizontal")
-    // console.log(cardView)
   }
   const changePage = (action) => {
     let calcChangePage = pageActual ;
@@ -75,7 +76,6 @@ function App() {
     } else if (action === "decrease" && pageActual > 1) {
       calcChangePage--;
     }
-    console.log(calcChangePage)
     setPageActual(calcChangePage);
   }
 

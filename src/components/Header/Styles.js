@@ -12,4 +12,5 @@ export const Container = styled.header`
 
 export const Logo = styled.img`
     width: 140px;
+  
 `;

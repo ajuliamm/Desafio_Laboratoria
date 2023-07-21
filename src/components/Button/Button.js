@@ -2,10 +2,10 @@ import React from "react";
 import {StyledButton} from "./Styles"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Button = ({content, onClick, typeBtn}) => { 
+const Button = ({content, onClick, typeBtn, cardView}) => { 
       
     return(
-        <StyledButton className={typeBtn} onClick={onClick}>
+        <StyledButton cardView={cardView} className={typeBtn} onClick={onClick}>
             {content}
         </StyledButton>
     )
