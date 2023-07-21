@@ -20,12 +20,10 @@ export const StyledButton = styled.button`
         border: none;
         background-color: transparent;
         font-size: 2rem;
-        margin-left: 7px;
-
-        
-        
+        margin-left: 7px;        
     
     }
+    
     &.more{
         width: 30px;
         height: 30px;
@@ -41,10 +39,7 @@ export const StyledButton = styled.button`
         opacity: .5;      
         box-shadow:0 2px 5px 0 ;
         @media (min-width:1180px) {
-            display:  ${props => props.cardView === "horizontal" ? "block" : "none"};
-            
-
-
+            display:  ${props => props.cardView === "horizontal" ? "block" : "none"};           
 
         }
     
